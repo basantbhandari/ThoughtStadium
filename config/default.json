@@ -1,0 +1,6 @@
+{
+  "mongoURI": "mongodb+srv://basant123:basant123@thoughtstadiumcluster0.bbmm8.mongodb.net/<dbname>?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken",
+  "githubClientId": "36ebb61644d83d057d5b",
+  "githubSecret": "db9a5385f4cdfb72db4fc6e3f3c9ee097a7c1046"
+}
