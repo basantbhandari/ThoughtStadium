@@ -1,6 +1,6 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 
@@ -24,7 +24,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     if (password !== password2) {
       setAlert('password do not match', 'danger');
     } else {
-      //console.log('User registration successful');
       register({ name, email, password });
     }
   };
@@ -34,64 +33,89 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   }
 
   return (
-    <Fragment>
-      <h1 className='large text-primary'>Sign Up</h1>
-      <p className='lead'>
-        <i className='fas fa-user'></i> Create Your Account
-      </p>
-      <form className='form' onSubmit={e => onSubmit(e)}>
-        <div className='form-group'>
-          <input
-            type='text'
-            placeholder='Name'
-            name='name'
-            value={name}
-            onChange={e => onChange(e)}
-            // required
-          />
+    <div className='row'>
+      <div className='col s12 14 offset-14'>
+        <div className='card'>
+          <div className='card-action amber darken-3 white-text'>
+            <i className='fas fa-user'></i>
+            <h3 className='center'>Create Your Account</h3>
+          </div>
+          <div className='card-content'>
+            <div className='form-field'>
+              <form onSubmit={e => onSubmit(e)}>
+                <div className='input-field col s12 loginFormField'>
+                  <i className='fas fa-signature prefix'></i>
+                  <input
+                    type='text'
+                    name='name'
+                    value={name}
+                    onChange={e => onChange(e)}
+                    class='validate'
+                  />
+                  <label htmlFor='username'>username</label>
+                </div>
+
+                <div className='input-field col s12 loginFormField'>
+                  <i className='fas fa-envelope-square prefix'></i>
+                  <input
+                    type='email'
+                    name='email'
+                    value={email}
+                    onChange={e => onChange(e)}
+                    class='validate'
+                  />
+                  <label htmlFor='email'>Email Address</label>
+                </div>
+                <p class='center'>
+                  This site uses Gravatar so if you want a profile image, use a
+                  Gravatar email.
+                </p>
+
+                <div className='input-field col s12 loginFormField'>
+                  <i className='fas fa-key prefix'></i>
+
+                  <input
+                    type='password'
+                    name='password'
+                    value={password}
+                    onChange={e => onChange(e)}
+                    class='validate'
+                  />
+                  <label htmlFor='Password'>Password</label>
+                </div>
+
+                <div className='input-field col s12 loginFormField'>
+                  <i className='fas fa-key prefix'></i>
+
+                  <input
+                    type='password'
+                    name='password2'
+                    value={password2}
+                    onChange={e => onChange(e)}
+                    class='validate'
+                  />
+                  <label htmlFor='Password'>Confirm Password</label>
+                </div>
+
+                <div className='center-align'>
+                  <button
+                    class='btn waves-effect waves-light amber btn-large '
+                    type='submit'
+                    name='action'
+                  >
+                    Submit
+                    <i class='material-icons right'>send</i>
+                  </button>
+                </div>
+              </form>
+              <h5 className='loginBtn'>
+                Already have an account? <a href='/login'>Sign In</a>
+              </h5>
+            </div>
+          </div>
         </div>
-        <div className='form-group'>
-          <input
-            type='email'
-            placeholder='Email Address'
-            name='email'
-            value={email}
-            onChange={e => onChange(e)}
-            //required
-          />
-          <small className='form-text'>
-            This site uses Gravatar so if you want a profile image, use a
-            Gravatar email
-          </small>
-        </div>
-        <div className='form-group'>
-          <input
-            type='password'
-            placeholder='Password'
-            name='password'
-            // minLength='6'
-            //required
-            value={password}
-            onChange={e => onChange(e)}
-          />
-        </div>
-        <div className='form-group'>
-          <input
-            type='password'
-            placeholder='Confirm Password'
-            name='password2'
-            //minLength='6'
-            //required
-            value={password2}
-            onChange={e => onChange(e)}
-          />
-        </div>
-        <input type='submit' className='btn btn-primary' value='Register' />
-      </form>
-      <p className='my-1'>
-        Already have an account? <Link to='/login'>Sign In</Link>
-      </p>
-    </Fragment>
+      </div>
+    </div>
   );
 };
 

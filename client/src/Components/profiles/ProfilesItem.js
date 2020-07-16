@@ -10,32 +10,39 @@ const ProfilesItem = ({
     location,
     skills,
   },
-}) => {
-  return (
-    <div className='profile bg-light'>
-      <img src={avatar} alt='' className='round-img' />
-      <div>
+}) => (
+  <div className='mycontainer'>
+    <div className='box'>
+      <img src={avatar} alt='pp' className='myimage' />
+      <div className='card center cyan white-text textContainer'>
         <h2>{name}</h2>
         <p>
           {status}
           {company && <span> at {company}</span>}
         </p>
-        <p className='my-1'>{location && <span>at {location}</span>}</p>
-        <Link to={`/profile/${_id}`} className='btn btn-primary'>
-          View Profile
-        </Link>
+        <p>{location && <span>at {location}</span>}</p>
+
+        <div>
+          <ul className='row'>
+            {skills.slice(0, 4).map((skill, index) => (
+              <li key={index} className='skill-item'>
+                <i className='fas fa-check'></i>
+                {skill}
+              </li>
+            ))}
+          </ul>
+
+          <Link
+            to={`/profile/${_id}`}
+            className='btn-large purple darken-3  white-text '
+          >
+            View Profile
+          </Link>
+        </div>
       </div>
-      <ul>
-        {skills.slice(0, 4).map((skill, index) => (
-          <li key={index} className='text-primary'>
-            <i className='fas fa-check'></i>
-            {skill}
-          </li>
-        ))}
-      </ul>
     </div>
-  );
-};
+  </div>
+);
 
 ProfilesItem.propTypes = {
   profile: PropTypes.object.isRequired,

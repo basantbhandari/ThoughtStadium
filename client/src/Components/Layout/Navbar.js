@@ -1,71 +1,110 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
+import companylogo from '../../img/cmplogo.png';
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
-    <ul>
+    <Fragment>
       <li>
-        <Link to='/profiles'>
-          <i className='fas fa-lightbulb'></i>
+        <a
+          href='/profiles'
+          className='waves-effect green accent-3 waves-light btn-large'
+        >
+          <i className='fas fa-lightbulb'></i>{' '}
           <span className='hide-sm'>Thinkers</span>
-        </Link>
+        </a>
       </li>
       <li>
-        <Link to='/posts'>
-          <i className='fas fa-blog'></i> <span className='hide-sm'>Posts</span>
-        </Link>
+        <a
+          href='/posts'
+          className='waves-effect green accent-3 waves-light btn-large'
+        >
+          <i className='fas fa-blog'></i>{' '}
+          <span className='hide-sm'>Thoughts</span>
+        </a>
       </li>
       <li>
-        <Link to='/dashboard'>
+        <a
+          href='/dashboard'
+          className='waves-effect green accent-3 waves-light btn-large'
+        >
           <i className='fas fa-user'></i>{' '}
           <span className='hide-sm'>Dashboard</span>
-        </Link>
+        </a>
       </li>
       <li>
-        <Link onClick={logout} to='/'>
+        <a
+          onClick={logout}
+          href='/'
+          className='waves-effect green accent-3 waves-light btn-large'
+        >
           <i className='fas fa-sign-out-alt'></i>{' '}
-          <span className='hide-sm'>Logout</span>
-        </Link>
+          <span className='hide-sm'>Check out</span>
+        </a>
       </li>
-    </ul>
+    </Fragment>
   );
 
   const guestLinks = (
-    <ul>
+    <Fragment>
       <li>
-        <Link to='/profiles'>
+        <a
+          href='/profiles'
+          className='waves-effect green accent-3 waves-light btn-large'
+        >
           <i className='fas fa-lightbulb'></i>{' '}
-          <span className='hide-sm'>Thinkers</span>
-        </Link>
+          <span className='hide-sm '>Thinkers</span>
+        </a>
       </li>
       <li>
-        <Link to='/register'>
+        <a
+          href='/register'
+          className='waves-effect green accent-3 waves-light btn-large'
+        >
           <i className='fas fa-sign-in-alt'></i>{' '}
           <span className='hide-sm'>Register</span>
-        </Link>
+        </a>
       </li>
       <li>
-        <Link to='/login'>
+        <a
+          href='/login'
+          className='waves-effect green accent-3 waves-light btn-large'
+        >
           <i className='fas fa-sign-out-alt'></i>{' '}
-          <span className='hide-sm'>Login</span>
-        </Link>
+          <span className='hide-sm'>Check in</span>
+        </a>
       </li>
-    </ul>
+    </Fragment>
   );
 
   return (
-    <nav className='navbar bg-dark'>
-      <h1>
-        <Link to='/'>
-          <i className='fas fa-spider'></i> Thought Stadium
-        </Link>
-      </h1>
-      {!loading && (
-        <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
-      )}
+    <nav className=' indigo'>
+      <div className='nav-wraper container '>
+        <a href='/' class='brand-logo  waves-effect waves-dark '>
+          <img
+            src={companylogo}
+            alt='company logo'
+            className='companylogo'
+          ></img>
+        </a>
+        <a href='/' data-target='mobile-demo' class='sidenav-trigger'>
+          <i class='material-icons'>menu</i>
+        </a>
+
+        <ul id='nav-mobile' class='right  hide-on-med-and-down'>
+          {!loading && (
+            <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
+          )}
+        </ul>
+
+        <ul class='sidenav' id='mobile-demo'>
+          {!loading && (
+            <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
+          )}
+        </ul>
+      </div>
     </nav>
   );
 };

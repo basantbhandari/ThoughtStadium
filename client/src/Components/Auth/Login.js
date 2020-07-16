@@ -1,5 +1,4 @@
-import React, { Fragment, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
@@ -27,39 +26,58 @@ const Login = ({ login, isAuthenticated }) => {
   }
 
   return (
-    <Fragment>
-      <h1 className='large text-primary'>Sign In</h1>
-      <p className='lead'>
-        <i className='fas fa-user'></i> Sign in to Your Account
-      </p>
-      <form className='form' onSubmit={e => onSubmit(e)}>
-        <div className='form-group'>
-          <input
-            type='email'
-            placeholder='Email Address'
-            name='email'
-            value={email}
-            onChange={e => onChange(e)}
-            required
-          />
-        </div>
-        <div className='form-group'>
-          <input
-            type='password'
-            placeholder='Password'
-            name='password'
-            minLength='6'
-            value={password}
-            onChange={e => onChange(e)}
-          />
-        </div>
+    <div className='row'>
+      <div className='col s12 14 offset-14'>
+        <div className='card'>
+          <div className='card-action purple accent-4 white-text'>
+            <i className='fas fa-user'></i>
+            <h3 className='center'>Sign in to Your Account</h3>
+          </div>
+          <div className='card-content'>
+            <div className='form-field'>
+              <form onSubmit={e => onSubmit(e)}>
+                <div className='input-field col s12 loginFormField'>
+                  <i className='fas fa-envelope-square prefix'></i>
+                  <input
+                    type='email'
+                    name='email'
+                    value={email}
+                    onChange={e => onChange(e)}
+                    class='validate'
+                  />
+                  <label htmlFor='email'>Email Address</label>
+                </div>
+                <div className='input-field col s12 loginFormField'>
+                  <i className='fas fa-key prefix'></i>
 
-        <input type='submit' className='btn btn-primary' value='Login' />
-      </form>
-      <p className='my-1'>
-        Don't have an account? <Link to='/register'>Sign Up</Link>
-      </p>
-    </Fragment>
+                  <input
+                    type='password'
+                    name='password'
+                    value={password}
+                    onChange={e => onChange(e)}
+                    class='validate'
+                  />
+                  <label htmlFor='Password'>Password</label>
+                </div>
+                <div className='center-align'>
+                  <button
+                    class='btn waves-effect waves-light lime btn-large '
+                    type='submit'
+                    name='action'
+                  >
+                    Submit
+                    <i class='material-icons right'>send</i>
+                  </button>
+                </div>
+              </form>
+              <h5 className='loginBtn'>
+                Don't have an account? <a href='/register'>Sign Up</a>
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

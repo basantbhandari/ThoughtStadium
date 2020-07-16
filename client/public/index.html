@@ -18,10 +18,57 @@
     />
 
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!--Import Google Icon Font-->
+    <link
+      href="http://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+
     <title>Welcome to Thought Stadium</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
+    <!--Import jQuery before materialize.js-->
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-2.1.1.min.js"
+    ></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+      // Or with jQuery
+
+      $(document).ready(function () {
+        $('.sidenav').sidenav();
+      });
+
+      // Or with jQuery
+
+      $(document).ready(function () {
+        $('.datepicker').datepicker();
+      });
+
+      // Or with jQuery
+
+      $(document).ready(function () {
+        $('.datepicker').datepicker();
+      });
+
+      // Or with jQuery
+
+      $(document).ready(function () {
+        $('select').formSelect();
+      });
+    </script>
   </body>
 </html>

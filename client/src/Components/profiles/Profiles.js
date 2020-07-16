@@ -15,22 +15,18 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
       {loading ? (
         <Spinner />
       ) : (
-        <Fragment>
-          <h1 className='large text-primary'>Thinkers</h1>
-          <p className='lead'>
-            <i className='fab fa-connectdevelop'></i> As much you share , more
-            you gain
-          </p>
-          <div className='profiles'>
+        <div className='card center'>
+          <h1 className='card'>Thinkers</h1>
+          <div className='card'>
             {profiles.length > 0 ? (
               profiles.map(profile => (
                 <ProfileItem key={profile._id} profile={profile} />
               ))
             ) : (
-              <h4>No profiles found...</h4>
+              <div className='card center red'>Still no profiles found...</div>
             )}
           </div>
-        </Fragment>
+        </div>
       )}
     </Fragment>
   );

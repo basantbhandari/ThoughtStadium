@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -9,25 +9,32 @@ export const Landing = ({ isAuthenticated }) => {
   }
 
   return (
-    <section className='landing'>
-      <div className='dark-overlay'>
-        <div className='landing-inner'>
-          <h1 className='x-large'>Thought Stadium</h1>
-          <p className='lead'>
+    <div className='container'>
+      <div className='center '>
+        <h1 class='siteName'>Thought Stadium</h1>
+        <div class='card-panel  lime landingCard'>
+          <h4 class='white-text flow-text '>
             A new way to share Idea, Thought, Quartation and your feeling to the
             world that might change the way we living.
-          </p>
-          <div className='buttons'>
-            <Link to='/register' className='btn btn-primary'>
-              Sign Up
-            </Link>
-            <Link to='/login' className='btn btn-light'>
-              Login
-            </Link>
-          </div>
+          </h4>
         </div>
       </div>
-    </section>
+
+      <div className='center '>
+        <a
+          href='/register'
+          class='waves-effect waves-light btn-large orange darken-3 landingbtn'
+        >
+          Sign Up
+        </a>
+        <a
+          href='/login'
+          class='waves-effect waves-light btn-large orange darken-3 landingbtn'
+        >
+          Login
+        </a>
+      </div>
+    </div>
   );
 };
 

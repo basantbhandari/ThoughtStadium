@@ -103,7 +103,7 @@ export const addPost = formData => async dispatch => {
   }
 };
 
-// Get pos
+// Get post
 
 export const getPost = id => async dispatch => {
   try {

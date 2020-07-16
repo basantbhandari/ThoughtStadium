@@ -1,15 +1,15 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import { deleteExperience } from '../../actions/profile';
-
 const Experience = ({ experience, deleteExperience }) => {
   const experiences = experience.map(exp => (
     <tr key={exp._id}>
       <td>{exp.company}</td>
-      <td className='hide-sm'>{exp.title}</td>
+      <td>{exp.title}</td>
       <td>
+        {' '}
         <Moment format='YYYY/MM/DD'>{exp.from}</Moment> -{' '}
         {exp.to === null ? (
           ' Now'
@@ -17,32 +17,30 @@ const Experience = ({ experience, deleteExperience }) => {
           <Moment format='YYYY/MM/DD'>{exp.to}</Moment>
         )}
       </td>
-      <td>
-        <button
-          onClick={() => deleteExperience(exp._id)}
-          className='btn btn-danger'
-        >
-          Delete
-        </button>
-      </td>
+      <div
+        className='btn right waves-effect waves-light red darken-2'
+        onClick={() => deleteExperience(exp._id)}
+      >
+        delete
+      </div>
     </tr>
   ));
 
   return (
-    <Fragment>
-      <h2 className='my-2'>Experience Credentials</h2>
-      <table className='table'>
+    <div className='card-panel teal lighten-2'>
+      <h2 className='btn btn-large white  black-text'>Event Credentials</h2>
+      <table class='striped highlight centered responsive-table'>
         <tHead>
           <tr>
             <th>Company</th>
-            <th className='hide-sn'>Title</th>
-            <th className='hide-sm'>Years</th>
+            <th>Title</th>
+            <th>Years</th>
             <th />
           </tr>
         </tHead>
         <tbody>{experiences}</tbody>
       </table>
-    </Fragment>
+    </div>
   );
 };
 

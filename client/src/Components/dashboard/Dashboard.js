@@ -20,33 +20,38 @@ const Dashboard = ({
   return loading && profile == null ? (
     <Spinner />
   ) : (
-    <Fragment>
-      <h1 className='large text-primary'>Dashboard</h1>
-      <p className='lead'>
-        <i className='fas fa-user'></i>
-        Welcome {user && user.name}
-      </p>
+    <div className='card-panel grey lighten-5'>
+      <div className='center card-panel yellow darken-4'>
+        <h1 className=' white-text '>Dashboard</h1>
+        <h3 className='btn btn-large white black-text '>
+          Welcome {user && user.name}
+        </h3>
+      </div>
+
       {profile !== null ? (
         <Fragment>
           <DashboardActions />
           <Experience experience={profile.experience} />
           <Education education={profile.education} />
-          <div className='my-2'>
-            <button className='btn btn-danger' onClick={() => deleteAccount()}>
-              <i className='fas fa-user-minus'></i>
+          <div className='center dashboarddeletebtn'>
+            <button
+              className='btn btn-large red white-text'
+              onClick={() => deleteAccount()}
+            >
+              <i className='fas fa-trash'></i>
               Delete My Account
             </button>
           </div>
         </Fragment>
       ) : (
         <Fragment>
-          <p>Yoh have not setup a profile, please add some info </p>
+          <p>Yoh have not setup a profile, Please set up your profile </p>
           <Link to='/create-profile' className='btn btn-primary my-1'>
             Create Profile
           </Link>
         </Fragment>
       )}
-    </Fragment>
+    </div>
   );
 };
 

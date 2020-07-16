@@ -8,24 +8,20 @@ const ProfileAbout = ({
     user: { name },
   },
 }) => (
-  <div className='profile-about bg-light p-2'>
+  <div className='card green center white-text'>
     {bio && (
       <Fragment>
-        <h2 className='text-primary'>{name.trim().split(' ')[0]}'s Bio</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
-          doloremque nesciunt, repellendus nostrum deleniti recusandae nobis
-          neque modi perspiciatis similique?
-        </p>
+        <h2 className='orange'>{name.trim().split(' ')[0]}'s Bio</h2>
+        <p className='flow-text'>{bio}</p>
         <div className='line'></div>
       </Fragment>
     )}
 
-    <h2 className='text-primary'>Skill Set</h2>
-    <div className='skills'>
+    <h2 className='pink'>Skill Set</h2>
+    <div className='skillsContainer'>
       {skills.map((skill, index) => (
-        <div key={index} className='p-1'>
-          <i className='fas fa-check'></i>
+        <div key={index} className='skill-item'>
+          <i className='fas fa-check '></i>
           {skill}
         </div>
       ))}
